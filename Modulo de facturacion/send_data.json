@@ -1,0 +1,27 @@
+{
+    "cod_factura": 2,
+    "cod_cliente": 1,
+    "nombre_cliente": "Juan Perez",
+    "ruc_cliente": "123456789",
+    "detalles": [{
+            "cod_detalle": 1,
+            "cod_articulo": 1,
+            "nombre_articulo": "Leche",
+            "cantidad": 2,
+            "precio_unitario": 10,
+            "subtotal": 20
+        },
+        {
+            "cod_detalle": 2,
+            "cod_articulo": 9,
+            "nombre_articulo": "Pan",
+            "cantidad": 1,
+            "precio_unitario": 5,
+            "subtotal": 5
+        }
+    ],
+    "total_igv": 15.6,
+    "total_factura": 55.6,
+    "documento_factura": "KNUjnekjvew="
+
+}

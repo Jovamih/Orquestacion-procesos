@@ -1,0 +1,19 @@
+{
+    "cod_cliente": 1,
+    "nombre_cliente": "Shaylynn Guilliatt",
+    "ruc_cliente": "413-49-645",
+    "detalles": [{
+            "cod_articulo": 1,
+            "nombre_articulo": "Lapiz",
+            "cantidad": 4,
+            "precio_unitario": 1.5
+        },
+        {
+            "cod_articulo": 5,
+            "nombre_articulo": "Tempera",
+            "cantidad": 10,
+            "precio_unitario": 12.5
+        }
+
+    ]
+}
