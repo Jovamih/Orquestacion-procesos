@@ -1,14 +1,18 @@
 {
-  "author": "Carl Hörberg <carl.hoerberg@gmail.com>",
-  "name": "nodejs-amqp-example",
-  "description": "Example project showing how to use CloudAMQP with Node",
-  "version": "0.0.1",
-  "homepage": "http://www.cloudamqp.com",
-  "repository": {
-    "url": ""
+  "name": "84-codes-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "amqp": ">= 0.1.6",
-    "amqplib": "^0.8.0"
+    "amqplib": "^0.5.6",
+    "dotenv": "^11.0.0",
+    "mysql2": "^2.3.3",
+    "rascal": "^10.2.6"
   }
 }
