@@ -13,7 +13,7 @@ $channel->queue_declare('cola_administracion_inventario', false, true, false, fa
 
 $msg = new AMQPMessage(json_encode($_SESSION));
 //$msg = new AMQPMessage($json); //json_encode($_SESSION)
-$channel->basic_publish($msg, '', 'key_cola_administracion_inventario'); //cola_facturacion
+$channel->basic_publish($msg, 'exchange_procesosnegocio', 'key_cola_administracion_inventario'); //cola_facturacion
 
 //echo " [x] Sent 'Hello World!'\n";
 
