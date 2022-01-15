@@ -93,7 +93,7 @@ def main():
         #desempaqueta el mensaje para extraer los datos
         data=json.loads(body)
         #alteracion
-        data=adaptar_json_porque_jeffrey_no_quiere(data)
+        #data=adaptar_json_porque_jeffrey_no_quiere(data)
         #genera la factura
         data_factura=generar_factura(data)
         #registramos la factura en la base de datos

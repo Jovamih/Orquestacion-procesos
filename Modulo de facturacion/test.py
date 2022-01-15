@@ -10,18 +10,18 @@ connection=pika.BlockingConnection(params)
 channel=connection.channel()
 
 def send():
-    with open("data.json","r") as f:
+    with open("receive_data.json","r") as f:
         content=json.load(f)
     #print(content)
-    channel.basic_publish(exchange="exchange_procesosnegocio",routing_key="key_cola_procesamientoordenes",body=json.dumps(content))
-    print(f"[+] Mensaje enviado a la cola de facturacion")
+    channel.basic_publish(exchange="exchange_procesosnegocio",routing_key="key_cola_facturacion",body=json.dumps(content))
+    print(f"[+] Mensaje enviado a la cola de cuentas por cobrar")
     connection.close()
 def callback(ch,method,properties,body):
     print("[+] Recibido mensaje:")
     print(body)
 
 def receive():
-    channel.basic_consume(queue="cola_cuentasporcobrar",on_message_callback=callback,auto_ack=True)
+    channel.basic_consume(queue="cola_facturacion",on_message_callback=callback,auto_ack=True)
     channel.start_consuming()
     print("[*] Esperando mensajes de la cola de Reserva. CTRL+C para salir")
     connection.close()

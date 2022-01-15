@@ -6,18 +6,18 @@
     "detalles": [{
             "cod_detalle": 1,
             "cod_articulo": 1,
-            "nombre_articulo": "Leche",
+            "nombre_articulo": "Lapiz",
             "cantidad": 2,
-            "precio_unitario": 10,
-            "subtotal": 20
+            "precio_unitario": 1.5,
+            "subtotal": 3
         },
         {
             "cod_detalle": 2,
-            "cod_articulo": 9,
-            "nombre_articulo": "Pan",
+            "cod_articulo": 3,
+            "nombre_articulo": "Colores",
             "cantidad": 1,
-            "precio_unitario": 5,
-            "subtotal": 5
+            "precio_unitario": 7.5,
+            "subtotal": 1.5
         }
     ],
     "total_igv": 15.6,
