@@ -1,0 +1,2 @@
+Instalar Python Version=3.8.11
+Instalar los requerimientos: pip install -r requirements.txt
