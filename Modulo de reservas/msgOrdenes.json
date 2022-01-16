@@ -1,0 +1,21 @@
+{
+    "cod_usuario":2,
+    "lista_articulos":[
+        {
+            "cod_articulo":1,
+            "cantidad_solicitada":0
+        },
+        {
+            "cod_articulo":2,
+            "cantidad_solicitada":0
+        },
+        {
+            "cod_articulo":3,
+            "cantidad_solicitada":2
+        },
+        {
+            "cod_articulo":4,
+            "cantidad_solicitada":2
+        }
+    ]
+}
