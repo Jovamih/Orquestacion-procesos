@@ -28,7 +28,8 @@ echo    '<div class="alert alert-primary" style="text-align:center; margin-top:1
             <div class="spinner-grow text-primary"></div>
             <div class="spinner-grow text-primary"></div>
             <div class="spinner-grow text-primary"></div>
-        </div>'
+        </div>';
+        include "templates/pie.php";
 
 //$enviado = true;
 //include 'recibir.php';
