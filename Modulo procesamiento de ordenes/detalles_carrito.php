@@ -41,8 +41,8 @@
         </div>
     <?php } ?>
 <?php
-    include 'templates/pie.php';
-    print_r(json_encode($_SESSION['detalles']));
+    //include 'templates/pie.php';
+    //print_r(json_encode($_SESSION['detalles']));
     //include 'enviar.php';
     
 ?>

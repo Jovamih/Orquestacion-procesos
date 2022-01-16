@@ -13,7 +13,7 @@ echo " [*] Waiting for messages. To exit press CTRL+C\n";
 
 $callback = function ($msg) {
     //echo ' [x] Received ', $msg->body, "\n";
-    echo ' [x] Received\n ';
+    echo ' [x] Received',"\n";
     $mensaje = json_decode($msg->body,true);
     //print_r($mensaje);
     $parte_a =  $mensaje['origen'];
@@ -26,8 +26,10 @@ $callback = function ($msg) {
         //$parte_c =  $mensaje['documento_factura'];
         $parte_d =  $mensaje['fecha_cobro'];
         $parte_e =  $mensaje['estado_registro'];
+        $parte_f =  $mensaje['fecha_entrega'];
         $mensajeFinal = "Pedido ha sido ejecutado satisfactoriamente!";
-        echo $parte_a.' - '.$parte_d.' - '.$parte_e.' - '.$mensajeFinal;
+        echo $parte_a.' - '.$parte_d.' - '.$parte_e.' - '.$parte_f.' - '.$mensajeFinal;
+        echo "\n";
         //echo '<script type="text/javascript">'; 
     }
     //echo '<script>alert("gaaa");</script>;';
@@ -35,6 +37,7 @@ $callback = function ($msg) {
 };
   
 $channel->basic_consume('cola_procesamientoordenes', 'exchange_procesosnegocio', false, true, false, false, $callback);
+//$channel->basic_consume('cola_reserva', 'exchange_procesosnegocio', false, true, false, false, $callback);
   
 while ($channel->is_open) {
     $channel->wait();
@@ -44,6 +47,3 @@ $channel->close();
 $connection->close();
 
 ?>
-
-
-   
