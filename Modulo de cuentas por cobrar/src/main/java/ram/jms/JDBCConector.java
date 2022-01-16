@@ -24,6 +24,7 @@ public class JDBCConector {
             int cod_factura = recibido.getInt("cod_factura");
             String estado_registro = recibido.getString("estado_registro");
             String fecha_cobro = recibido.getString("fecha_cobro");
+            String fecha_entrega = recibido.getString("fecha_entrega");
             String nombre_cliente = recibido.getString("nombre_cliente");
             String ruc_cliente = recibido.getString("ruc_cliente");
             double total_cobrar = recibido.getDouble("total_factura");
@@ -32,8 +33,8 @@ public class JDBCConector {
             // Execute a query para Cuentas por cobrar
             System.out.println("Insertando registros a la tabla...");
             //String sql = "INSERT INTO CuentasPorCobrar VALUES (100, 'Zara', 'Ali', 18)";
-            String sql = "INSERT INTO procesosnegociodatabase.CuentasPorCobrar (cod_factura, cod_cliente, nombre_cliente, ruc_cliente, total_igv, total_cobrar, fecha_cobro, estado_registro)" +
-                    "VALUES ('"+cod_factura+"','"+cod_cliente+"','"+nombre_cliente+"','"+ruc_cliente+"','"+total_igv+"','"+total_cobrar+"','"+fecha_cobro+"','"+estado_registro+"')";
+            String sql = "INSERT INTO procesosnegociodatabase.CuentasPorCobrar (cod_factura, cod_cliente, nombre_cliente, ruc_cliente, total_igv, total_cobrar, fecha_cobro,fecha_entrega,estado_registro)" +
+                    "VALUES ('"+cod_factura+"','"+cod_cliente+"','"+nombre_cliente+"','"+ruc_cliente+"','"+total_igv+"','"+total_cobrar+"','"+fecha_cobro+"','"+fecha_entrega+"','"+estado_registro+"')";
             stmt.executeUpdate(sql);
             System.out.println("Registros insertados en la tabla Cuentas por cobrar...");
 

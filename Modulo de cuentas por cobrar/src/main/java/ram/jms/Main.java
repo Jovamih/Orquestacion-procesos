@@ -8,29 +8,42 @@ import com.rabbitmq.client.DeliverCallback;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 
-public class JSONReceiver {
+public class Main {
 
     //Nombre de la cola de la que recibe el JSON (Mi cola)
     private final static String QUEUE_NAME = "cola_cuentasporcobrar";
     //Nombre de la cola a la que se envia el JSON recbido (Cola Procesamiento Ordenes)
-    private final static String QUEUE_NAME2 = "cola_procesamientoordenes";
+    private final static String QUEUE_NAME2 = "test_queue";
 
-    //Para la fecha
+
     DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-    String fecha = dtf.format(LocalDateTime.now()).substring(0,10);
+    //String fecha = dtf.format(LocalDateTime.now()).substring(0,10);
+
+    public int getRandomNumber(int min, int max) {
+        return (int) ((Math.random() * (max - min)) + min);
+    }
+
+    int aleatorio = getRandomNumber(1, 7);
+
+    // parse date from yyyy-mm-dd pattern
+    LocalDate hoy = LocalDate.now();
+    String fecha_pedido = dtf.format(hoy).substring(0,10);
+    String fecha_entrega = dtf.format(hoy.plusDays(aleatorio)).substring(0,10);
+
 
     //Para la conexión a la base de datos
     JDBCConector conector = new JDBCConector();
-
 
     public static void main(String[] argv) throws Exception {
 
         //Para convertirlo a JSON
 
-        JSONReceiver teorico = new JSONReceiver();
+        Main teorico = new Main();
 
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("tiger.rmq.cloudamqp.com");
@@ -55,7 +68,8 @@ public class JSONReceiver {
             JSONArray lista_productos = root.getJSONArray("detalles");
             //--------Agregamos nuestros 3 campos
             root.put("origen","cuentasporcobrar");
-            root.put("fecha_cobro",teorico.fecha);
+            root.put("fecha_cobro",teorico.fecha_pedido);
+            root.put("fecha_entrega",teorico.fecha_entrega);
             root.put("estado_registro","Pendiente");
             //--------Insertamos en la base de datos
             teorico.conector.insertar(root, lista_productos);
@@ -63,7 +77,7 @@ public class JSONReceiver {
             String nuevo_message = root.toString();;
             //String nuevo_message = message + " " + teorico.fecha;
             //REENVÍO EL MENSAJE
-            channel.basicPublish("", QUEUE_NAME2, null,
+            channel.basicPublish("exchange_procesosnegocio", "key_cola_procesamientoordenes", null,
                     nuevo_message.getBytes("UTF-8"));
             System.out.println(" [x] Sent '" + nuevo_message + "'");
 
