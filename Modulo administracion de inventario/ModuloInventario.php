@@ -71,7 +71,7 @@ $callback = function ($msg) {
             $json_procesamiento = json_encode($miArray);
             echo $json_procesamiento ;
             $connection3 = new AMQPStreamConnection('tiger.rmq.cloudamqp.com', 5672, 'apfwqrdk', 'QfWRMKJpECkqHzz43MdFveLcQG3_YWFX','apfwqrdk');
-            $channel2= $connection3->channel();
+            $channel2= $connection3->channel(); 
             $channel2->queue_declare('cola_administracion_inventario', false, true, false, false);
 
             $msg2 = new AMQPMessage($json_procesamiento);
