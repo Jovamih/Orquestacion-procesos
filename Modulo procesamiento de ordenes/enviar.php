@@ -9,11 +9,11 @@ use PhpAmqpLib\Message\AMQPMessage;
 $connection = new AMQPStreamConnection('tiger.rmq.cloudamqp.com', 5672, 'apfwqrdk', 'QfWRMKJpECkqHzz43MdFveLcQG3_YWFX','apfwqrdk');
 $channel = $connection->channel();
 
-$channel->queue_declare('cola_administracion_inventario', false, true, false, false); //cola_facturacion
+$channel->queue_declare('cola_administracion_inventario', false, true, false, false); 
 
 $msg = new AMQPMessage(json_encode($_SESSION));
 //$msg = new AMQPMessage($json); //json_encode($_SESSION)
-$channel->basic_publish($msg, 'exchange_procesosnegocio', 'key_cola_administracion_inventario'); //cola_facturacion
+$channel->basic_publish($msg, 'exchange_procesosnegocio', 'key_cola_administracion_inventario'); 
 
 //echo " [x] Sent 'Hello World!'\n";
 
