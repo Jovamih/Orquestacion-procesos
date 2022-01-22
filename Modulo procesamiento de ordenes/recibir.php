@@ -9,27 +9,36 @@ $channel = $connection->channel();
 
 $channel->queue_declare('cola_procesamientoordenes', false, true, false, false);
 
-echo " [*] Waiting for messages. To exit press CTRL+C\n";
+echo " [*] Esperando mensaje!\n";
 
 $callback = function ($msg) {
     //echo ' [x] Received ', $msg->body, "\n";
-    echo ' [x] Received',"\n";
+    echo ' [x] Recibiendo mensaje',"\n";
     $mensaje = json_decode($msg->body,true);
     //print_r($mensaje);
     $parte_a =  $mensaje['origen'];
     if($parte_a=="inventario"){
         $parte_b =  $mensaje['contenido'];
         $mensajeFinal = $parte_b;
-        echo $parte_a.' - '.$parte_b;
+        echo ' ***********************************************************************',"\n";
+        echo ' ... Mensaje desde -> '.$parte_a,"\n";
+        echo ' ... Contenido -> '.$parte_b."\n";
+        echo ' [x] Fin de mensaje!',"\n";
+        echo ' ***********************************************************************',"\n";
     }
     if($parte_a=="cuentasporcobrar"){
         //$parte_c =  $mensaje['documento_factura'];
         $parte_d =  $mensaje['fecha_cobro'];
         $parte_e =  $mensaje['estado_registro'];
         $parte_f =  $mensaje['fecha_entrega'];
+        echo ' ***********************************************************************',"\n";
+        echo ' ... Mensaje desde -> '.$parte_a,"\n";
         $mensajeFinal = "Pedido ha sido ejecutado satisfactoriamente!";
-        echo $parte_a.' - '.$parte_d.' - '.$parte_e.' - '.$parte_f.' - '.$mensajeFinal;
-        echo "\n";
+        echo ' ... Contenido -> '.$mensajeFinal."\n";
+        echo ' ... Fecha de pedido -> '.$parte_d.' - '.'Fecha de entrega -> '.$parte_f."\n";
+        echo ' ... Estado de pago -> '.$parte_e."\n";
+        echo ' [x] Fin de mensaje!',"\n";
+        echo ' ***********************************************************************',"\n";
         //echo '<script type="text/javascript">'; 
     }
     //echo '<script>alert("gaaa");</script>;';
