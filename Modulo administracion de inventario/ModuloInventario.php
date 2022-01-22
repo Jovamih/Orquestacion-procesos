@@ -53,7 +53,7 @@ $callback = function ($msg) {
             }
 
             $jsonreserva1 = json_encode($json_reservas);
-            echo $jsonreserva1;
+            
             //echo $json;
             $connection2 = new AMQPStreamConnection('tiger.rmq.cloudamqp.com', 5672, 'apfwqrdk', 'QfWRMKJpECkqHzz43MdFveLcQG3_YWFX','apfwqrdk');
             $channel1= $connection2->channel();
@@ -61,7 +61,9 @@ $callback = function ($msg) {
 
             $msg1 = new AMQPMessage($jsonreserva1);
             $channel1->basic_publish($msg1, 'exchange_procesosnegocio', 'key_cola_reserva'); 
-            echo " [x] Sent 'Se envio correctamente a Modulo de Reserva!'\n"; 
+            echo " [x] 'Se esta enviando a Modulo de Reserva!'\n";
+            echo $jsonreserva1;
+            echo " [x] 'Se envio correctamente a Modulo de Reserva!'\n"; 
             //echo 'reserva';
             $channel1->close();
             $connection2->close();
@@ -69,14 +71,16 @@ $callback = function ($msg) {
             //Enviar json a modulo de procesamientoordenes
             $miArray = array("origen"=>"inventario", "contenido"=>"Falta de Inventario");
             $json_procesamiento = json_encode($miArray);
-            echo $json_procesamiento ;
+            
             $connection3 = new AMQPStreamConnection('tiger.rmq.cloudamqp.com', 5672, 'apfwqrdk', 'QfWRMKJpECkqHzz43MdFveLcQG3_YWFX','apfwqrdk');
             $channel2= $connection3->channel(); 
             $channel2->queue_declare('cola_administracion_inventario', false, true, false, false);
 
             $msg2 = new AMQPMessage($json_procesamiento);
             $channel2->basic_publish($msg2, 'exchange_procesosnegocio', 'key_cola_procesamientoordenes');
-            echo " [x] Sent 'Se envio correctamente a Modulo de Procesamiento!'\n";
+            echo " [x] 'Se esta enviando a Modulo de Procesamiento!'\n";
+            echo $json_procesamiento ;
+            echo " [x] 'Se envio correctamente a Modulo de Procesamiento!'\n";
             //echo 'no disponible';
             $channel2->close();
             $connection3->close();
