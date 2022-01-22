@@ -40,7 +40,7 @@ def generar_factura(data):
     data_factura['total_factura']=suma_subtotal+total_igv
 
     print("[+] Generando Documento Factura [pdf]")
-    data_factura=get_documento_factura(data_factura)
+    #data_factura=get_documento_factura(data_factura)
     return data_factura
 
 def registrar_factura(data):
