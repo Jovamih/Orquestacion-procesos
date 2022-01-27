@@ -5,7 +5,7 @@ Distribucion de lenguajes por modulo
 
 * Modulo de procesamiento de ordenes -> **PHP**
 * Modulo de administracion de inventario -> **PHP**
-* Modulo de reserva -> **Node.js**
+* Modulo de reserva -> **Python**
 * Modulo de Facturacion -> **Python**
 * Modulo de Procesamiento de ordenes -> **Java**
 
